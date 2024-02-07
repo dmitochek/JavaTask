@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -10,12 +10,24 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
-    @Column(name = "name")
+    @Column
     String name;
 
+    @Column
+    String description;
+
+    @Column
+    int status;
+
+    @Column
+    int priority;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    User author;
 }
