@@ -12,9 +12,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping("/api")
+@RequestMapping("/api/tasks")
 public class TaskController {
-    @Autowired
+    /*@Autowired
     TaskRepository taskRepository;
 
     @GetMapping("/tutorials/{author_id}")
@@ -30,6 +30,6 @@ public class TaskController {
         } catch(Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
+    }*/
 
 }

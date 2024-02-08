@@ -8,10 +8,10 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Integer> {
-    @Query(
+    /*@Query(
             value = "SELECT * " +
                     "FROM Task t " +
                     "WHERE t.author = :author_id"
     )
-    List<Task> getAllByAuthorId(@Param("author_id") int authorId);
+    List<Task> getAllByAuthorId(@Param("author_id") int authorId);*/
 }

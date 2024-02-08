@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping("/apt/users")
+@CrossOrigin(origins = "http://localhost:8080")
+@RequestMapping("/api/users")
 public class UserController{
     @Autowired
     private ModelMapper modelMapper;
@@ -50,7 +50,7 @@ public class UserController{
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePost(@PathVariable(name = "id") int id) throws UserNotFoundException {
+    public ResponseEntity<String> deleteUser(@PathVariable(name = "id") int id) throws UserNotFoundException {
         userService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully");
     }
