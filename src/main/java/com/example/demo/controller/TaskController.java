@@ -82,5 +82,12 @@ public class TaskController {
                 modelMapper.map(task, TaskDTO.class)).collect(Collectors.toList());
     }
 
+    @PostMapping("/sort/deadline/{id}")
+    public List<TaskDTO> getUserTasksDateASC(@PathVariable(name = "id") int id) throws UserNotFoundException {
+        List<Task> response = taskService.getAllByAuthorIdDeadlineASC(id);
+        return response.stream().map(task ->
+                modelMapper.map(task, TaskDTO.class)).collect(Collectors.toList());
+    }
+
 
 }

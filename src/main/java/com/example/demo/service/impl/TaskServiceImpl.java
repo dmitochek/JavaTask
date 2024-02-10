@@ -1,11 +1,9 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Task;
-import com.example.demo.entity.User;
 import com.example.demo.exception.TaskNotFoundException;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.repository.TaskRepository;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.service.TaskService;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +54,7 @@ public class TaskServiceImpl implements TaskService {
         taskFound.setDescription(task.getDescription());
         taskFound.setPriority(task.getPriority());
         taskFound.setName(task.getName());
+        taskFound.setDeadline(task.getDeadline());
 
         return taskRepository.save(taskFound);
     }
@@ -68,5 +67,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> getAllByAuthorIdPriorityASC(int id) throws UserNotFoundException {
         return taskRepository.getAllByAuthorIdPriorityASC(id);
+    }
+
+    @Override
+    public List<Task> getAllByAuthorIdDeadlineASC(int id) throws UserNotFoundException {
+        return taskRepository.getAllByAuthorIdDeadlineASC(id);
     }
 }

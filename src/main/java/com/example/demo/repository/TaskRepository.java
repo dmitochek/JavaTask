@@ -23,4 +23,9 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             nativeQuery = true)
     List<Task> getAllByAuthorIdPriorityASC(@Param("author_id") int authorId);
 
+    @Query(
+            value = "SELECT * FROM tasks WHERE author = :author_id ORDER BY deadline ASC",
+            nativeQuery = true)
+    List<Task> getAllByAuthorIdDeadlineASC(@Param("author_id") int authorId);
+
 }
