@@ -1,21 +1,16 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Task;
-import com.example.demo.entity.User;
 import com.example.demo.exception.TaskNotFoundException;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.TaskDTO;
-import com.example.demo.model.UserDTO;
-import com.example.demo.repository.TaskRepository;
 import com.example.demo.service.TaskService;
-import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

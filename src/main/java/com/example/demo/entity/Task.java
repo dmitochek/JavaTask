@@ -5,7 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table(name="users")
+@Table(name="tasks")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -27,7 +27,6 @@ public class Task {
     @Column
     int priority;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
-    User author;
+    @Column(name="author")
+    int author;
 }

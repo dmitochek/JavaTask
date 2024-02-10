@@ -9,5 +9,5 @@ public class TaskDTO {
     String description;
     Integer status;
     Integer priority;
-    UserDTO author;
+    Integer author;
 }
