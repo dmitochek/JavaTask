@@ -59,4 +59,14 @@ public class TaskServiceImpl implements TaskService {
 
         return taskRepository.save(taskFound);
     }
+
+    @Override
+    public List<Task> getAllByAuthorIdStatusASC(int id) throws UserNotFoundException {
+        return taskRepository.getAllByAuthorIdStatusASC(id);
+    }
+
+    @Override
+    public List<Task> getAllByAuthorIdPriorityASC(int id) throws UserNotFoundException {
+        return taskRepository.getAllByAuthorIdPriorityASC(id);
+    }
 }

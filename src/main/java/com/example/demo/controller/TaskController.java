@@ -25,12 +25,10 @@ public class TaskController {
     public TaskController(TaskService taskService){
         super();
         this.taskService = taskService;
-        //this.userService = userService;
     }
 
     @PostMapping
     public ResponseEntity<TaskDTO> createTask(@RequestBody TaskDTO taskDTO) {
-        //TODO check if user exist...
         Task postRequest = modelMapper.map(taskDTO, Task.class);
         Task task = taskService.createTask(postRequest);
 
@@ -70,7 +68,19 @@ public class TaskController {
                 modelMapper.map(task, TaskDTO.class)).collect(Collectors.toList());
     }
 
+    @PostMapping("/sort/status/{id}")
+    public List<TaskDTO> getUserTasksStatusASC(@PathVariable(name = "id") int id) throws UserNotFoundException {
+        List<Task> response = taskService.getAllByAuthorIdStatusASC(id);
+        return response.stream().map(task ->
+                modelMapper.map(task, TaskDTO.class)).collect(Collectors.toList());
+    }
 
+    @PostMapping("/sort/priority/{id}")
+    public List<TaskDTO> getUserTasksPriorityASC(@PathVariable(name = "id") int id) throws UserNotFoundException {
+        List<Task> response = taskService.getAllByAuthorIdPriorityASC(id);
+        return response.stream().map(task ->
+                modelMapper.map(task, TaskDTO.class)).collect(Collectors.toList());
+    }
 
 
 }

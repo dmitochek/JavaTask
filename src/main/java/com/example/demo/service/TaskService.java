@@ -12,4 +12,6 @@ public interface TaskService {
     void deleteTask(int id) throws TaskNotFoundException;
     Task getTaskById(int id) throws TaskNotFoundException;
     Task updateTask(int id, Task task) throws TaskNotFoundException;
+    List<Task> getAllByAuthorIdStatusASC(int id) throws UserNotFoundException;
+    List<Task> getAllByAuthorIdPriorityASC(int id) throws UserNotFoundException;
 }
