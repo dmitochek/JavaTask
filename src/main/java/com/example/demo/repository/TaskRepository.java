@@ -13,13 +13,27 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             nativeQuery = true)
     List<Task> getAllByAuthorId(@Param("author_id") int authorId);
 
+    //SELECT * FROM tasks WHERE author = :author_id ORDER BY status ASC
     @Query(
-            value = "SELECT * FROM tasks WHERE author = :author_id ORDER BY status ASC",
+            value = "SELECT * FROM tasks WHERE author = :author_id ORDER BY CASE status " +
+                    "WHEN 'OPEN' THEN 1 " +
+                    "WHEN 'IN_PROGRESS' THEN 2 " +
+                    "WHEN 'ON_HOLD' THEN 3 " +
+                    "WHEN 'CLOSED' THEN 4 " +
+                    "ELSE 5 " +
+                    "END",
             nativeQuery = true)
     List<Task> getAllByAuthorIdStatusASC(@Param("author_id") int authorId);
 
+    //SELECT * FROM tasks WHERE author = :author_id ORDER BY priority ASC
     @Query(
-            value = "SELECT * FROM tasks WHERE author = :author_id ORDER BY priority ASC",
+            value = "SELECT * FROM tasks WHERE author = :author_id ORDER BY CASE priority " +
+                    "WHEN 'CRITICAL' THEN 1 " +
+                    "WHEN 'HIGH' THEN 2 " +
+                    "WHEN 'MEDIUM' THEN 3 " +
+                    "WHEN 'LOW' THEN 4 " +
+                    "ELSE 5 " +
+                    "END",
             nativeQuery = true)
     List<Task> getAllByAuthorIdPriorityASC(@Param("author_id") int authorId);
 

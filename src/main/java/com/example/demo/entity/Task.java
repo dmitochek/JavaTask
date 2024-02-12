@@ -1,4 +1,6 @@
 package com.example.demo.entity;
+import com.example.demo.enums.Priority;
+import com.example.demo.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
@@ -24,11 +26,14 @@ public class Task {
     @Column
     String description;
 
+    //@Enumerated(EnumType.STRING)
     @Column
-    int status;
+    @Enumerated(EnumType.STRING)
+    Status status;
 
     @Column
-    int priority;
+    @Enumerated(EnumType.STRING)
+    Priority priority;
 
     @Column(name="author")
     int author;
